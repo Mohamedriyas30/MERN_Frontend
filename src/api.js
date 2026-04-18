@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: 'https://mern-frontend-flame-five.vercel.app/api' });
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
