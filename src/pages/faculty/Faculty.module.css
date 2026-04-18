@@ -1,0 +1,67 @@
+.center { display: flex; justify-content: center; padding: 3rem; }
+
+.greeting { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 1.25rem; }
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px; margin-bottom: 1.75rem;
+}
+
+.statCard {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.1rem 1.25rem;
+}
+.statLabel { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 4px; }
+.statValue { font-size: 1.75rem; font-weight: 700; color: var(--brand); line-height: 1; }
+.statSub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+.sectionTitle { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); margin-bottom: 10px; }
+
+.pageHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+
+.tableWrap { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.table th { text-align: left; padding: 9px 14px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); background: var(--bg); border-bottom: 1px solid var(--border); }
+.table td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: #fafafa; }
+
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 13.5px; border: 1px dashed var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+
+.courseGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.courseCard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.courseBanner { height: 64px; background: linear-gradient(135deg, #eff6ff, #dbeafe); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+.courseBody { padding: 0.85rem 1rem; }
+.courseTag { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); background: #eff6ff; padding: 2px 8px; border-radius: 99px; margin-bottom: 5px; }
+.courseTitle { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.courseMeta { font-size: 11.5px; color: var(--muted); margin-bottom: 8px; }
+.cardActions { display: flex; gap: 7px; }
+
+/* Modal */
+.modalOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 500; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modal { background: var(--surface); border-radius: var(--radius-lg); padding: 1.5rem; width: 100%; max-width: 440px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); }
+.modalHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; font-size: 14px; font-weight: 600; color: var(--text); }
+.modalClose { background: none; border: none; font-size: 16px; color: var(--muted); cursor: pointer; }
+.modalClose:hover { color: var(--text); }
+.modalFooter { display: flex; justify-content: flex-end; gap: 8px; margin-top: 1.25rem; }
+
+.msgSuccess { background: #dcfce7; color: var(--success); border: 1px solid #86efac; border-radius: var(--radius); padding: 8px 12px; font-size: 13px; margin-bottom: 12px; }
+.msgError { background: #fee2e2; color: var(--danger); border: 1px solid #fca5a5; border-radius: var(--radius); padding: 8px 12px; font-size: 13px; margin-bottom: 12px; }
+
+.fieldLabel { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 5px; }
+.fieldSelect { width: 100%; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13.5px; background: var(--surface); color: var(--text); outline: none; }
+.fieldSelect:focus { border-color: var(--accent); }
+.fieldInput { flex: 1; padding: 7px 10px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: inherit; outline: none; background: var(--surface); }
+.fieldInput:focus { border-color: var(--accent); }
+.fieldInputSm { width: 110px; padding: 7px 10px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: inherit; outline: none; background: var(--surface); }
+.fieldInputSm:focus { border-color: var(--accent); }
+
+/* Create course */
+.createWrap { max-width: 580px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; }
+.textarea { width: 100%; padding: 8px 12px; border: 1.5px solid var(--border); border-radius: var(--radius); font-size: 13.5px; font-family: inherit; background: var(--surface); color: var(--text); outline: none; resize: vertical; }
+.textarea:focus { border-color: var(--accent); }
+.twoCol { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
+.modulesSection { margin-bottom: 1.25rem; }
+.modulesHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.moduleRow { display: flex; gap: 8px; margin-bottom: 7px; }
