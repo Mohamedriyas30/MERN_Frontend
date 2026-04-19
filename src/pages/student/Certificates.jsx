@@ -62,9 +62,9 @@ export default function Certificates() {
             variant="successBtn"
             size="sm"
             onClick={() => {
-              window.open(
-                `https://mern-backend-v4lz.onrender.com/api/pdf/certificate/${user?.name}?course=${enr.course?.title}`
-              );
+              const name = encodeURIComponent(user?.name || 'Student');
+              const course = encodeURIComponent(enr.course?.title || 'Course');
+              window.open(`/api/pdf/certificate/${name}?course=${course}`);
             }}
             style={{ marginTop: '1rem' }}
           >
