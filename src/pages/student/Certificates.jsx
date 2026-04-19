@@ -10,10 +10,12 @@ export default function Certificates() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('/enrollments/my').then(({ data }) => {
-      setEnrollments(data);
-      setLoading(false);
-    }).catch(() => setLoading(false));
+    api.get('/enrollments/my')
+      .then(({ data }) => {
+        setEnrollments(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
   if (loading) return <div className={styles.center}><Spinner /></div>;
@@ -43,6 +45,7 @@ export default function Certificates() {
               year: 'numeric', month: 'long', day: 'numeric'
             })} · EduTrack
           </div>
+
           <div className={styles.certFooter}>
             <div className={styles.certSig}>
               <span>{enr.course?.faculty?.name || 'Faculty'}</span>
@@ -53,10 +56,16 @@ export default function Certificates() {
               <span>Platform</span>
             </div>
           </div>
+
+          {/* ✅ PDF DOWNLOAD BUTTON */}
           <Btn
             variant="successBtn"
             size="sm"
-            onClick={() => alert('In production: PDF download via html2pdf or backend.')}
+            onClick={() => {
+              window.open(
+                `https://mern-backend-v4lz.onrender.com/api/pdf/certificate/${user?.name}?course=${enr.course?.title}`
+              );
+            }}
             style={{ marginTop: '1rem' }}
           >
             ↓ Download PDF
@@ -69,16 +78,20 @@ export default function Certificates() {
           <h3 className={styles.sectionTitle} style={{ marginTop: '1.5rem' }}>
             Pending ({pending.length})
           </h3>
+
           <div className={styles.pendingList}>
             {pending.map((enr) => (
               <div key={enr._id} className={styles.pendingItem}>
                 <div className={styles.lockIcon}>🔒</div>
+
                 <div style={{ flex: 1 }}>
                   <div className={styles.moduleName}>{enr.course?.title}</div>
+
                   <div className={styles.moduleDur}>
                     {enr.completionPct}% done —{' '}
                     {enr.moduleProgress.filter((m) => !m.completed).length} modules left
                   </div>
+
                   <div style={{ marginTop: 6, maxWidth: 200 }}>
                     <ProgressBar pct={enr.completionPct} color="blue" />
                   </div>
