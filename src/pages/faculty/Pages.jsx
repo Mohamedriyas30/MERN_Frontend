@@ -213,7 +213,7 @@ export function FacultyStudents() {
 
 // ── Create Course ─────────────────────────────────────────────
 export function CreateCourse() {
-  const [form, setForm] = useState({ title: '', description: '', category: 'Data Science', emoji: '📚' });
+  const [form, setForm] = useState({ title: '', code: '', description: '', category: 'Data Science', emoji: '📚' });
   const [modules, setModules] = useState([{ title: '', duration: '' }]);
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState('');
@@ -227,6 +227,7 @@ export function CreateCourse() {
 
   const submit = async () => {
     if (!form.title.trim()) return setMsg('Course title is required');
+    if (!form.code.trim()) return setMsg('Course code is required (e.g. CS101)');
     setSaving(true); setMsg('');
     try {
       await api.post('/courses', {
@@ -234,7 +235,7 @@ export function CreateCourse() {
         modules: modules.filter((m) => m.title.trim()),
       });
       setMsg('Course published!');
-      setForm({ title: '', description: '', category: 'Data Science', emoji: '📚' });
+      setForm({ title: '', code: '', description: '', category: 'Data Science', emoji: '📚' });
       setModules([{ title: '', duration: '' }]);
     } catch (err) {
       setMsg(err.response?.data?.message || 'Failed');
@@ -250,6 +251,7 @@ export function CreateCourse() {
       )}
 
       <Input label="Course Title *" value={form.title} onChange={set('title')} placeholder="e.g. Python for Beginners" />
+      <Input label="Course Code * (Unique)" value={form.code} onChange={set('code')} placeholder="e.g. PY-101" />
       <div style={{ marginBottom: '1rem' }}>
         <label className={styles.fieldLabel}>Description</label>
         <textarea className={styles.textarea} value={form.description} onChange={set('description')} placeholder="What will students learn?" rows={3} />
